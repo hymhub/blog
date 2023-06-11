@@ -103,7 +103,7 @@ const config = {
             position: "right",
           },
           {
-            href: 'https://github.com/hyminghan/blog',
+            href: 'https://github.com/hymhub/blog',
             label: 'GitHub',
             position: 'right',
           },
