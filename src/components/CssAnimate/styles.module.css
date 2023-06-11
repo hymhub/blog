@@ -1,0 +1,225 @@
+/* Note */
+.noteBox {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+}
+
+.noteBox > div {
+  position: relative;
+  width: 20px;
+  height: 180px;
+  background-image: linear-gradient(to bottom, var(--ifm-font-color-base-05), var(--ifm-background-color-custom));
+  margin: 0 10px;
+  border-radius: 10px;
+  border: 2px solid var(--ifm-font-color-base-1);
+  box-shadow:
+    3px 3px 8px var(--ifm-font-color-base-1),
+    -3px -3px 8px var(--ifm-font-color-base-05),
+    inset -2px -2px 2px var(--ifm-font-color-base-05),
+    inset 2px 2px 2px var(--ifm-font-color-base-05);
+  overflow: hidden;
+}
+
+.noteBox > div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  box-shadow:
+    inset -4px -4px 4px var(--ifm-font-color-base-1),
+    0 200px 0 190px #fcbe15;
+  animation: note-anim 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--idx) * -.3s);
+}
+
+@keyframes note-anim {
+  0% {
+    transform: translateY(160px);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translateY(0px);
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    transform: translateY(160px);
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* MindFocus */
+.mindFocusBox {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mindFocus {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mindFocus > .circle {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  margin: -30px;
+}
+
+.mindFocus > .circle:first-of-type {
+  --circle-color: lightsalmon;
+  border-top: 5px solid var(--circle-color);
+  animation: mind-focus-anim 3s linear infinite;
+}
+.mindFocus > .circle:nth-of-type(2) {
+  --circle-color: lightgreen;
+  border-left: 5px solid var(--circle-color);
+  animation: mind-focus-anim-reverse 3s linear infinite;
+  animation-delay: -.5s;
+}
+.mindFocus > .circle:last-of-type {
+  --circle-color: lightblue;
+  position: absolute;
+  top: calc(-50% - 15px);
+  border-left: 5px solid var(--circle-color);
+  animation: mind-focus-anim-reverse 3s linear infinite;
+  animation-delay: -2s;
+}
+
+.mindFocus > .circle::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--circle-color);
+  border-radius: 50%;
+  box-shadow:
+    0 0 4px var(--circle-color),
+    0 0 8px var(--circle-color),
+    0 0 16px var(--circle-color),
+    0 0 32px var(--circle-color),
+    0 0 64px var(--circle-color);
+}
+
+.mindFocus > .circle:nth-of-type(2)::before,
+.mindFocus > .circle:last-of-type::before {
+  top: initial;
+  left: 8px;
+  bottom: 8px;
+}
+
+
+@keyframes mind-focus-anim {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mind-focus-anim-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* CodeLife */
+.codeLife {
+  position: relative;
+  height: 200px;
+  user-select: none;
+}
+
+.codeLife > .cardBox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  column-gap: 10px;
+  grid-template-columns: repeat(8, 20px);
+}
+
+.codeLife > .cardBox > .cardItem {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 20px;
+  height: 30px;
+  transition: all .5s;
+}
+
+.codeLife > .cardBox > .cardItem > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--ifm-color-primary);
+  border-radius: 4px;
+  background: var(--ifm-background-color-custom);
+  box-shadow:
+    inset 5px 5px 10px var(--ifm-font-color-base-1),
+    inset -5px -5px 10px var(--ifm-font-color-base-05);
+}
+
+.codeLife > .cardBox > .cardItem > .opposite {
+  transform: translateZ(-1px) rotateX(180deg);
+}
+
+.codeLife > .codeBg {
+  width: 280px;
+  height: 180px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px 6px 6px;
+  text-align: left;
+  font-size: 12px;
+  font-family: Söhne Mono,Monaco,Andale Mono,Ubuntu Mono,monospace;
+  color: #13A10E;
+  border: 1px solid var(--ifm-font-color-base-1);
+  border-radius: 4px;
+  box-shadow:
+    0 3px 10px -2px var(--ifm-font-color-base-1),
+    0 1px 3px 0 var(--ifm-font-color-base-05);
+}
+
+.codeLife > .codeBg > div {
+  border: 1px solid var(--ifm-font-color-base-1);
+  border-radius: 2px;
+  height: 100%;
+  padding: 6px;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.codeLife > .codeBg::before {
+  content: '';
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #fc625d;
+  box-shadow: 20px 0 #fdbc40, 40px 0 #35cd4b;
+}

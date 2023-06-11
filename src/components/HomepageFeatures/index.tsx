@@ -1,41 +1,41 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
+import Note from '../CssAnimate/Note';
+import MindFocus from '../CssAnimate/MindFocus';
+import CodeLife from '../CssAnimate/CodeLife';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  Svg: React.ComponentType<React.ComponentProps<'div'>>;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: '音符间的失落',
+    Svg: Note,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        他曾是音符间的灵魂律动，悠扬旋律在他指尖绽放，然而，命运的调子却让他失落在舞台之外，仅留下一份专注的技艺，宛如一只孤独的鸟儿在广阔天空中寻觅归宿。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '心灵的焦点',
+    Svg: MindFocus,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        不要让过去的阴影阻挡当下的阳光，也不要让未来的幻想遮蔽当下的真实，将心灵的焦点投射到此刻，感受当下的美好和生命的脉动。
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: '代码人生',
+    Svg: CodeLife,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        生命如代码，没有完美的程序，只有不断优化的可能性，在代码的世界里，每一个 bug 都是一次成长的机会，每一次重构都是一个更好的自己。
       </>
     ),
   },
@@ -44,8 +44,8 @@ const FeatureList: FeatureItem[] = [
 function Feature({title, Svg, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className={clsx('text--center', styles.featureSvg)}>
+        <Svg />
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
