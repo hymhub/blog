@@ -93,7 +93,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'HTML',
             position: 'right',
             label: '前端文档',
           },
@@ -116,15 +116,15 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true
       },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'U79K4PWUFR',
+      // algolia: {
+      //   // The application ID provided by Algolia
+      //   appId: 'U79K4PWUFR',
     
-        // // Public API key: it is safe to commit it
-        apiKey: 'c3c369f4c79b8877d966d8dda2bfd167',
+      //   // // Public API key: it is safe to commit it
+      //   apiKey: 'c3c369f4c79b8877d966d8dda2bfd167',
     
-        indexName: 'blog',
-      }
+      //   indexName: 'test',
+      // }
     }),
 };
 
