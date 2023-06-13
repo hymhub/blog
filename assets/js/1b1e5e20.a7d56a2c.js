@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkblog=self.webpackChunkblog||[]).push([[2063],{2048:e=>{e.exports=JSON.parse('{"permalink":"/blog/blog/tags/phaser","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"hyminghan\u7684\u535a\u5ba2","blogTitle":"hyminghan"}')}}]);
