@@ -4,6 +4,7 @@ title: 使用 Phaser3 制作小游戏(500行代码实现飞机大战)
 authors: [hyminghan]
 tags: [Phaser, 游戏引擎, 小游戏]
 ---
+<meta name="referrer" content="no-referrer" />
 
 ## Phaser官方简介
 Phaser是一个HTML5游戏框架，它的目的是辅助开发者真正快速地制作强大的、跨浏览器的HTML5游戏。 做这个框架，主要是想发掘现代浏览器（兼及桌面和移动两类系统）的优点。对浏览器的唯一要求是，支持画布（canvas）标签。
