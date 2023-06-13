@@ -118,15 +118,15 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
-      // algolia: {
-      //   // The application ID provided by Algolia
-      //   appId: 'U79K4PWUFR',
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'WAE01D23EV',
     
-      //   // // Public API key: it is safe to commit it
-      //   apiKey: 'c3c369f4c79b8877d966d8dda2bfd167',
+        // // Public API key: it is safe to commit it
+        apiKey: '5a73393b01d4337980670080f6fdb5ed',
     
-      //   indexName: 'test',
-      // }
+        indexName: 'hymhubio',
+      }
     }),
 };
 
