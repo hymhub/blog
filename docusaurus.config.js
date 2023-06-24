@@ -103,6 +103,11 @@ const config = {
             position: "right",
           },
           {
+            href: 'https://cnblogs.com/hymenhan',
+            label: '博客园',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/hymhub/blog',
             label: 'GitHub',
             position: 'right',
