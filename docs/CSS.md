@@ -58,7 +58,9 @@ sidebar_position: 2
 4. 外部样式表（External Stylesheet）：以 `.css` 文件形式存在的外部样式表，通过 `<link>` 标签在 HTML 文档中链接
 5. 浏览器样式表（Browser Stylesheet）：浏览器内置的默认样式表
 
-注意：使用 `!important` 时，无论其来源是什么，优先级都最高，滥用会导致难以维护和覆盖，谨慎使用
+:::caution 注意
+使用 `!important` 时，无论其来源是什么，优先级都最高，滥用会导致难以维护和覆盖，谨慎使用
+:::
 
 ### 特定性
 
