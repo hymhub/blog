@@ -52,7 +52,7 @@ int[] numbers = new int[5];
 // 时间复杂度高
 const arr = [2, 3, 2, 5, 3, 2, 2, 1];
 for (let i = 0; i < arr.length; ) {
-  if (arr.indexOf(arr[i]) != arr.lastIndexOf(arr[i])) {
+  if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i])) {
     arr.splice(i, 1);
   } else {
     i++;
@@ -68,7 +68,7 @@ console.log(arr); // [ 5, 3, 2, 1 ]
 const arr = [2, 3, 2, 5, 3, 2, 2, 1];
 for (let i = 0; i < arr.length; i++) {
   for (let j = i + 1; j < arr.length; ) {
-    if (arr[i] == arr[j]) {
+    if (arr[i] === arr[j]) {
       arr.splice(j, 1);
     } else {
       j++;
