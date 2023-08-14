@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'hyminghan',
-  tagline: '拒绝拖延症，保持自律！！！',
+  tagline: '我打算待会去码头整点薯条🍟',
   favicon: 'img/favicon.ico',
   url: 'https://hymhub.github.io',
   baseUrl: '/blog/',
