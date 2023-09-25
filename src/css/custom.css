@@ -31,3 +31,7 @@
 .menu__link, .navbar__item {
   font-weight: bold;
 }
+
+.hide {
+  display: none;
+}

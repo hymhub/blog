@@ -1,0 +1,247 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.piano-box {
+  transform: scale(.25);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s;
+}
+.piano {
+  width: 5000px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  transform-origin: bottom;
+  transform-style: preserve-3d;
+  transform: rotateX(50deg);
+  transition: transform 0.1s ease;
+}
+.piano::before,
+.piano::after {
+  content: '';
+  position: absolute;
+  background: #3c3c3c;
+  background-clip: content-box;
+  top: 0;
+  left: 6px;
+  right: 6px;
+  bottom: 0;
+  transform: translateZ(-76px);
+  box-shadow: 0 0 40px rgba(68, 68, 68, 0.4), 0 0 0 100px var(--ifm-background-color-custom);
+}
+.piano::after {
+  left: 25px;
+  right: 25px;
+  bottom: auto;
+  height: 79px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+.piano .key-1,
+.piano .key-3,
+.piano .key-5,
+.piano .key-6,
+.piano .key-8,
+.piano .key-10,
+.piano .key-12 {
+  position: relative;
+  width: 76px;
+  height: 500px;
+  padding: 0;
+  border: none;
+  border-top: 252px solid transparent;
+  box-sizing: border-box;
+  background-color: #edefee;
+  background-clip: content-box;
+  margin: 0 2px;
+  outline: none;
+  transform-origin: top;
+  transform-style: preserve-3d;
+  box-shadow: inset 2px 0 2px -1px rgba(255, 255, 255, 0.8), inset -2px 0 2px -1px rgba(255, 255, 255, 0.8), inset 10px -10px 10px -10px rgba(68, 68, 68, 0.3), inset -10px 0 10px -10px rgba(68, 68, 68, 0.3), inset 0 -200px 200px -200px rgba(255, 255, 255, 0.7), inset 0 0 0 1000px rgba(237, 239, 238, 0.5);
+  transition: background-color 0.1s ease, transform 0.1s ease;
+}
+.piano .key-1-active,
+.piano .key-3-active,
+.piano .key-5-active,
+.piano .key-6-active,
+.piano .key-8-active,
+.piano .key-10-active,
+.piano .key-12-active {
+  transform: rotateX(-7deg);
+}
+.piano .key-1:hover,
+.piano .key-3:hover,
+.piano .key-5:hover,
+.piano .key-6:hover,
+.piano .key-8:hover,
+.piano .key-10:hover,
+.piano .key-12:hover {
+  background-color: white;
+}
+.piano .key-1:hover::before,
+.piano .key-3:hover::before,
+.piano .key-5:hover::before,
+.piano .key-6:hover::before,
+.piano .key-8:hover::before,
+.piano .key-10:hover::before,
+.piano .key-12:hover::before {
+  background: white;
+}
+.piano .key-1::before,
+.piano .key-3::before,
+.piano .key-5::before,
+.piano .key-6::before,
+.piano .key-8::before,
+.piano .key-10::before,
+.piano .key-12::before,
+.piano .key-1::after,
+.piano .key-3::after,
+.piano .key-5::after,
+.piano .key-6::after,
+.piano .key-8::after,
+.piano .key-10::after,
+.piano .key-12::after {
+  content: '';
+  background: #edefee;
+  position: absolute;
+  height: 252px;
+  top: -250px;
+  left: 0;
+  box-shadow: inset 0 200px 200px -200px rgba(68, 68, 68, 0.3), inset 10px 10px 10px -10px rgba(68, 68, 68, 0.3), inset -10px 0 10px -10px rgba(68, 68, 68, 0.3), inset 0 0 0 1000px rgba(237, 239, 238, 0.5);
+  transition: background 0.1s ease;
+}
+.piano .key-1::after,
+.piano .key-3::after,
+.piano .key-5::after,
+.piano .key-6::after,
+.piano .key-8::after,
+.piano .key-10::after,
+.piano .key-12::after {
+  top: 100%;
+  width: 100%;
+  height: 76px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  box-shadow: inset 0 -30px 50px -30px rgba(0, 0, 0, 0.3), inset 0 2px 1px white, inset 0 4px rgba(0, 0, 0, 0.1), inset 0 10px 10px -10px rgba(0, 0, 0, 0.4);
+}
+.piano .key-1::before,
+.piano .key-6::before {
+  right: 26px;
+}
+.piano .key-3::before {
+  left: 14px;
+  right: 14px;
+}
+.piano .key-5::before,
+.piano .key-12::before {
+  left: 26px;
+  right: 0;
+}
+.piano .key-8::before {
+  left: 14px;
+  right: 20px;
+}
+.piano .key-10::before {
+  left: 20px;
+  right: 14px;
+}
+.piano .key-2,
+.piano .key-4,
+.piano .key-7,
+.piano .key-9,
+.piano .key-11 {
+  position: relative;
+  color: #444;
+  width: 32px;
+  height: 250px;
+  border: none;
+  padding: 0;
+  outline: none;
+  background: #5e5e5e;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  transform: translateZ(35px);
+  transform-style: preserve-3d;
+  transform-origin: top;
+  box-shadow: inset 0 -7px 5px, inset 4px 0 5px, inset -4px 0 5px, inset 0 0 0 1000px rgba(94, 94, 94, 0.5);
+  z-index: 1;
+  transition: background 0.1s ease, transform 0.1s ease;
+}
+.piano .key-2-active,
+.piano .key-4-active,
+.piano .key-7-active,
+.piano .key-9-active,
+.piano .key-11-active {
+  transform: rotateX(-5deg) translateZ(35px);
+}
+.piano .key-2:hover,
+.piano .key-4:hover,
+.piano .key-7:hover,
+.piano .key-9:hover,
+.piano .key-11:hover {
+  background: #808080;
+}
+.piano .key-2::before,
+.piano .key-4::before,
+.piano .key-7::before,
+.piano .key-9::before,
+.piano .key-11::before {
+  content: '';
+  position: absolute;
+  background: #444;
+  border-top-left-radius: 6px;
+  top: 0;
+  height: 100%;
+  width: 39px;
+  transform-origin: left;
+  left: 1px;
+  transform: rotateY(93deg);
+  box-shadow: inset -50px 0 50px -50px black;
+}
+.piano .key-2::after,
+.piano .key-4::after,
+.piano .key-7::after,
+.piano .key-9::after,
+.piano .key-11::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -2px;
+  width: 100%;
+  border-bottom: 31px solid #3f3f3f;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  height: 0;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25), 0 3px 5px -2px rgba(255, 255, 255, 0.8), 0 5px, 0 20px #3f3f3f, 0 40px #3f3f3f;
+}
+.piano .key-2:nth-child(-n + 7)::before,
+.piano .key-4:nth-child(-n + 7)::before,
+.piano .key-7:nth-child(-n + 7)::before,
+.piano .key-9:nth-child(-n + 7)::before,
+.piano .key-11:nth-child(-n + 7)::before {
+  left: 99%;
+  transform: rotateY(87deg);
+}
+.piano .key-2,
+.piano .key-7 {
+  margin: 0 -10px 0 -22px;
+}
+.piano .key-4,
+.piano .key-11 {
+  margin: 0 -22px 0 -10px;
+}
+.piano .key-9 {
+  margin: 0 -16px 0 -16px;
+}

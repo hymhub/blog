@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -6,33 +6,25 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 
 import styles from './index.module.css';
-
-const getCharStyle = (idx: number): React.CSSProperties & { ['--char-idx']?: string } => ({
-  ['--char-idx']: idx.toString(),
-})
+import Piano from '../components/Piano/index';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
+  const [playPiano, setPlayPiano] = useState(false)
+  const [pianoIsReady, setPianoIsReady] = useState(false)
   return (
     <header className={clsx(styles.heroBanner)}>
       <div className="container">
         <section className={styles.logoBox}>
-          <div className={styles.logoAvaParent}>
-            <div className={styles.logoAva}>
-              <div></div>
-            </div>
-            <div className={styles.logo}>
-              <img src="img/logo.png" alt="hyminghan" />
-            </div>
+          <div className={styles.logo}>
+            {/* <img src="img/logo.png" alt="hyminghan" /> */}
+            <Piano play={playPiano} setPianoIsReady={setPianoIsReady} />
+            <section className={clsx({ hide: playPiano || !pianoIsReady }, styles.playBar)}>
+              <p>要来一曲吗?</p>
+              <button onClick={() => setPlayPiano(true)}>好</button>
+            </section>
           </div>
-          <h1 className={clsx('hero__title', styles.anim1)}>
-            {
-              siteConfig.title.split('').map((char, idx) => (
-                <span style={getCharStyle(idx)} className={styles.char} key={idx}>{char}</span>
-              ))
-            }
-          </h1>
-          <h1 className={clsx('hero__title', styles.anim2)}>
+          <h1 className={clsx('hero__title')}>
             {siteConfig.title}
           </h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>

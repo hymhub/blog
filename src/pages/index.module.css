@@ -15,240 +15,55 @@
   justify-content: center;
 }
 
-.logoAva {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 6px;
-  transform: scale(1.2);
-  animation: scale-exit 2s cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-.logoAva>div {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  border-radius: 50%;
-  background-color: var(--ifm-background-color-custom);
-}
-
-.logoAvaParent {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-  border-radius: 50%;
-}
-
-.logoAvaParent > .logo {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  padding: 6px;
-}
-
-.logoAvaParent::before {
-  opacity: 0;
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 67%;
-  height: 67%;
-  border-radius: 50%;
-  z-index: 2;
-  box-shadow: 0px 0px 11.3px rgba(253, 217, 6, 0.163),
-    0px 0px 21.3px rgba(253, 217, 6, 0.234),
-    0px 0px 30.2px rgba(253, 217, 6, 0.29),
-    0px 0px 39px rgba(253, 217, 6, 0.346),
-    0px 0px 51.8px rgba(253, 217, 6, 0.417),
-    0px 0px 160px rgba(253, 217, 6, 0.58);
-  animation: ava-shadow 1s;
-  animation-delay: 1.8s;
-}
-
-.logoAva::before {
-  opacity: 0;
-  position: absolute;
-  left: calc(50% - 150px);
-  top: calc(50% - 150px);
-  content: '';
-  width: 300px;
-  height: 300px;
-  background-image: conic-gradient(transparent, transparent, transparent, #fcbe15);
-  animation: rotate-border-l 2s cubic-bezier(0.11, 0, 0.5, 0);
-}
-
-.logoAva::after {
-  opacity: 0;
-  transform: rotate(180deg);
-  position: absolute;
-  left: calc(50% - 150px);
-  top: calc(50% - 150px);
-  content: '';
-  width: 300px;
-  height: 300px;
-  background-image: conic-gradient(transparent, transparent, transparent, #fbdd08);
-  animation: rotate-border-r 2s cubic-bezier(0.11, 0, 0.5, 0);
-}
-
 .logoBox {
   padding: 3rem 0 2rem;
-  width: 800px;
-  margin: 0 auto;
   position: relative;
 }
 
-.logoBox>.anim1 {
-  position: absolute;
-  left: 0px;
-  top: -12px;
+.logoBox::before {
+  content: '';
+  display: block;
+  height: 120px;
+  margin-bottom: 4rem;
 }
 
-.logoBox>.anim2 {
-  opacity: 0;
-  letter-spacing: -30.6px;
-  transform: translateX(104px);
-  animation: name-left-in 1s forwards;
-  animation-delay: 1.9s;
-}
-
-.char {
+.logoBox > .logo {
   position: absolute;
-  offset-path: path('m2.5,552.54583c82.05601,20.99668 -4.01453,-282.25604 131.01312,-276.84522c135.02765,5.41082 259.13826,446.54235 453.16521,68c97.01347,-189.27118 -73.76001,-297.38722 -207.7395,-298.03122c-133.97949,-0.644 -199.35446,134.56701 -178.97551,217.80111c20.37895,83.2341 13.12257,89.79652 37.87948,121.70267c24.75691,31.90616 199.83764,24.03901 284.82241,21.06281');
-  animation: char-move 2s forwards cubic-bezier(0.11, 0, 0.5, 0);
-  offset-distance: calc(var(--char-idx) * 30px);
+  top: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 120px;
 }
 
 @media screen and (max-width: 996px) {
-  .logoAvaParent::before {
-    display: none;
-  }
-
-  .logoAva {
-    display: none;
-  }
-
   .logoBox {
-    width: 100%;
-    padding: 2rem;
+    padding: 2rem 0;
   }
-
-  .logoBox>.anim1 {
-    display: none;
-  }
-
-  .logoBox>.anim2 {
-    opacity: 1;
-    letter-spacing: 0px;
-    transform: translateX(0px);
-    animation: none;
-    animation-delay: initial;
-  }
-
-  .char {
-    position: static;
-    offset-path: initial;
-    animation: none;
-    offset-distance: initial;
+  .logoBox > .logo {
+    top: 2rem;
   }
 }
 
-@keyframes char-move {
-  0% {
-    offset-distance: calc(var(--char-idx) * 30px);
-    opacity: 0;
-    transform: scale(0.3);
-  }
-
-  30% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  99% {
-    offset-distance: calc(var(--char-idx) * 30px + 100%);
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  100% {
-    offset-distance: calc(var(--char-idx) * 30px + 100%);
-    opacity: 0;
-    transform: scale(1);
-  }
+.playBar {
+  position: absolute;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
+  background: #edefee;
+  border-radius: 8px;
+  padding: 8px 16px;
+  box-shadow: 0 0 2px rgba(68, 68, 68, 0.4);
+  font-weight: bold;
 }
-
-@keyframes name-left-in {
-  0% {
-    letter-spacing: -30.6px;
-    transform: translateX(104px);
-    opacity: 0;
-  }
-
-  1% {
-    letter-spacing: -30.6px;
-    transform: translateX(104px);
-    opacity: 1;
-  }
-
-  100% {
-    letter-spacing: 0px;
-    transform: translateX(0px);
-    opacity: 1;
-  }
+.playBar p {
+  margin-bottom: 8px;
 }
-
-@keyframes scale-exit {
-  from {
-    transform: scale(1.2);
-  }
-
-  to {
-    transform: scale(.6);
-  }
-}
-
-@keyframes rotate-border-l {
-  from {
-    opacity: 1;
-    transform: rotate(0deg);
-  }
-
-  to {
-    opacity: .2;
-    transform: rotate(1080deg);
-  }
-}
-
-@keyframes rotate-border-r {
-  from {
-    opacity: 1;
-    transform: rotate(180deg);
-  }
-
-  to {
-    opacity: .2;
-    transform: rotate(1260deg);
-  }
-}
-
-@keyframes ava-shadow {
-  0% {
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-  }
+.playBar button {
+  width: 100%;
+  border: 1px solid #1B1B1D;
+  border-radius: 4px;
+  line-height: 26px;
+  font-weight: bold;
+  cursor: pointer;
 }
