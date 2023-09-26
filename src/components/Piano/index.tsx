@@ -1,10 +1,16 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import "./style.css";
 const noteBaseUrl = "/blog/piano/";
-import midiJson from "../../../static/mariage_d'amour.json";
+import luv_letter from "../../../assets/music/luv_letter.json";
+import mariage_damour from "../../../assets/music/mariage_d'amour.json";
+import clsx from "clsx";
+
+const midiJson = Math.random() < .5 ? mariage_damour : luv_letter;
 
 function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 }
 
 const keys = [
@@ -488,7 +494,14 @@ const keys = [
     url: noteBaseUrl + "a78.mp3",
     type: "white",
   },
-  // {id: 61, name: 'C7', keyCode: '77', key: 'm', url: noteBaseUrl + 'a77.mp3', type: 'white'},
+  {
+    id: 61,
+    name: "C7",
+    keyCode: "77",
+    key: "m",
+    url: noteBaseUrl + "a77.mp3",
+    type: "white",
+  },
 ];
 
 type KeyItem = (typeof keys)[0];
@@ -499,37 +512,45 @@ interface KeysListItem extends KeyItem {
 
 const handleDocMouseUp = () => {
   keys.forEach((item, idx) => {
-    document.getElementById(item.name).classList.remove(`key-${(idx % 12) + 1}-active`);
-  })
-}
+    document
+      .getElementById(item.name)
+      .classList.remove(`key-${(idx % 12) + 1}-active`);
+  });
+};
 
 const handleKeyDown = (event: KeyboardEvent) => {
-  const t = keys.find(v => v.key === event.key)
+  const t = keys.find((v) => v.key === event.key);
   if (!t) {
-    return
+    return;
   }
-  const mouseDownEvent = new MouseEvent(isMobileDevice() ? "touchstart" : "mousedown", {
-    bubbles: true,
-    cancelable: true,
-    view: window,
-    button: 0,
-  });
+  const mouseDownEvent = new MouseEvent(
+    isMobileDevice() ? "touchstart" : "mousedown",
+    {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      button: 0,
+    }
+  );
   document.getElementById(t.name).dispatchEvent(mouseDownEvent);
-}
+};
 
 const handleKeyUp = (event: KeyboardEvent) => {
-  const t = keys.find(v => v.key === event.key)
+  const t = keys.find((v) => v.key === event.key);
   if (!t) {
-    return
+    return;
   }
-  const mouseUpEvent = new MouseEvent(isMobileDevice() ? "touchend" : "mouseup", {
-    bubbles: true,
-    cancelable: true,
-    view: window,
-    button: 0,
-  });
+  const mouseUpEvent = new MouseEvent(
+    isMobileDevice() ? "touchend" : "mouseup",
+    {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+      button: 0,
+    }
+  );
   document.getElementById(t.name).dispatchEvent(mouseUpEvent);
-}
+};
 
 export default memo(function Piano(props: {
   setPianoIsReady: React.Dispatch<React.SetStateAction<boolean>>;
@@ -549,20 +570,15 @@ export default memo(function Piano(props: {
     playNote(item.name);
   };
   const timeOutRef = useRef<NodeJS.Timeout>();
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
   const [keysList, setKeysList] = useState<KeysListItem[]>(
     keys.map((v) => ({ ...v, load: false }))
   );
   const midiPlay = (midiJson: {
     bpm: number;
     notes: {
-      duration: number;
-      durationTicks: number;
-      midi: number;
       name: string;
-      ticks: number;
       time: number;
-      velocity: number;
     }[];
   }) => {
     const noteQueue = midiJson.notes;
@@ -572,21 +588,27 @@ export default memo(function Piano(props: {
       const fragment = noteQueue.slice(0, 20);
       fragment.forEach((note) => {
         if (Date.now() - startTime >= note.time * 1000) {
-          const mouseDownEvent = new MouseEvent(isMobile ? "touchstart" : "mousedown", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-            button: 0,
-          });
-          const mouseUpEvent = new MouseEvent(isMobile ? "touchend" : "mouseup", {
-            bubbles: true,
-            cancelable: true,
-            view: window,
-            button: 0,
-          });
-          document.getElementById(note.name).dispatchEvent(mouseDownEvent);
+          const mouseDownEvent = new MouseEvent(
+            isMobile ? "touchstart" : "mousedown",
+            {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+              button: 0,
+            }
+          );
+          const mouseUpEvent = new MouseEvent(
+            isMobile ? "touchend" : "mouseup",
+            {
+              bubbles: true,
+              cancelable: true,
+              view: window,
+              button: 0,
+            }
+          );
+          document.getElementById(note.name)?.dispatchEvent?.(mouseDownEvent);
           setTimeout(() => {
-            document.getElementById(note.name).dispatchEvent(mouseUpEvent);
+            document.getElementById(note.name)?.dispatchEvent?.(mouseUpEvent);
           }, 80);
           noteQueue.shift();
         }
@@ -596,11 +618,11 @@ export default memo(function Piano(props: {
     play();
   };
   useEffect(() => {
-    setIsMobile(isMobileDevice())
+    setIsMobile(isMobileDevice());
     window.playPiano = () => {
       clearTimeout(timeOutRef.current);
       midiPlay(midiJson);
-    }
+    };
     return () => {
       clearTimeout(timeOutRef.current);
     };
@@ -637,16 +659,16 @@ export default memo(function Piano(props: {
         console.error("Failed to load audio samples:", error);
       });
     const isMobile = isMobileDevice();
-    isMobile || document.addEventListener('mouseup', handleDocMouseUp);
-    isMobile && document.addEventListener('touchend', handleDocMouseUp);
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('keyup', handleKeyUp)
+    isMobile || document.addEventListener("mouseup", handleDocMouseUp);
+    isMobile && document.addEventListener("touchend", handleDocMouseUp);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
     return () => {
-      isMobile || document.removeEventListener('mouseup', handleDocMouseUp);
-      isMobile && document.removeEventListener('touchend', handleDocMouseUp);
-      document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('keyup', handleKeyUp)
-    }
+      isMobile || document.removeEventListener("mouseup", handleDocMouseUp);
+      isMobile && document.removeEventListener("touchend", handleDocMouseUp);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
   }, []);
   return (
     <div className="piano-box">
@@ -655,12 +677,18 @@ export default memo(function Piano(props: {
           <button
             id={item.name}
             style={item.load ? undefined : { display: "none" }}
-            onMouseDown={isMobile ? undefined : () => handleMouseDown(item, (idx % 12) + 1)}
-            onTouchStart={isMobile ? () => handleMouseDown(item, (idx % 12) + 1) : undefined}
+            onMouseDown={
+              isMobile ? undefined : () => handleMouseDown(item, (idx % 12) + 1)
+            }
+            onTouchStart={
+              isMobile ? () => handleMouseDown(item, (idx % 12) + 1) : undefined
+            }
             key={item.id}
             type="button"
             tabIndex={-1}
-            className={`key-${(idx % 12) + 1}`}
+            className={clsx(`key-${(idx % 12) + 1}`, {
+              "key-last": idx === keysList.length - 1,
+            })}
             title={item.name}
           ></button>
         ))}

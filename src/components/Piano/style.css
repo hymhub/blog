@@ -131,6 +131,9 @@
 .piano .key-6::before {
   right: 26px;
 }
+.piano .key-last::before {
+  right: 0px;
+}
 .piano .key-3::before {
   left: 14px;
   right: 14px;
