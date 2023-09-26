@@ -78,23 +78,16 @@
 .piano .key-10-active,
 .piano .key-12-active {
   transform: rotateX(-7deg);
-}
-.piano .key-1:hover,
-.piano .key-3:hover,
-.piano .key-5:hover,
-.piano .key-6:hover,
-.piano .key-8:hover,
-.piano .key-10:hover,
-.piano .key-12:hover {
   background-color: white;
 }
-.piano .key-1:hover::before,
-.piano .key-3:hover::before,
-.piano .key-5:hover::before,
-.piano .key-6:hover::before,
-.piano .key-8:hover::before,
-.piano .key-10:hover::before,
-.piano .key-12:hover::before {
+
+.piano .key-1-active::before,
+.piano .key-3-active::before,
+.piano .key-5-active::before,
+.piano .key-6-active::before,
+.piano .key-8-active::before,
+.piano .key-10-active::before,
+.piano .key-12-active::before {
   background: white;
 }
 .piano .key-1::before,
@@ -183,12 +176,6 @@
 .piano .key-9-active,
 .piano .key-11-active {
   transform: rotateX(-5deg) translateZ(35px);
-}
-.piano .key-2:hover,
-.piano .key-4:hover,
-.piano .key-7:hover,
-.piano .key-9:hover,
-.piano .key-11:hover {
   background: #808080;
 }
 .piano .key-2::before,

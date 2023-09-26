@@ -55,15 +55,49 @@
   padding: 8px 16px;
   box-shadow: 0 0 2px rgba(68, 68, 68, 0.4);
   font-weight: bold;
+  color: #1c1e21;
+}
+.playBar > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 8px;
 }
 .playBar p {
   margin-bottom: 8px;
 }
 .playBar button {
-  width: 100%;
+  width: 80px;
+  color: #1c1e21;
+  background: #edefee;
   border: 1px solid #1B1B1D;
   border-radius: 4px;
   line-height: 26px;
   font-weight: bold;
   cursor: pointer;
+  white-space: nowrap;
+  flex: 1;
+  flex-shrink: 0;
+}
+.playBar button:hover {
+  filter: brightness(1.08);
+}
+.playBar button:active {
+  filter: brightness(.92);
+}
+.playBarTip {
+  opacity: 0;
+  pointer-events: none;
+  animation: fadeOut 3s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
