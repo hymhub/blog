@@ -1,11 +1,19 @@
 import React, { memo, useEffect, useRef, useState } from "react";
 import "./style.css";
 const noteBaseUrl = "/blog/piano/";
-import luv_letter from "../../../assets/music/luv_letter.json";
-import mariage_damour from "../../../assets/music/mariage_d'amour.json";
 import clsx from "clsx";
 
-const midiJson = Math.random() < .5 ? mariage_damour : luv_letter;
+const midis = ["mariage_d'amour", "my_heart_will_go_on", "the_truth_that_you_leave", "luv_letter", "summer", "晴天", "水边的阿狄丽娜"];
+
+let midiJson: { bpm: number; notes: { name: string; time: number; }[]; };
+
+const getMidiJson = async (playIndex?: number) => {
+  const midi = await import(
+    `../../../assets/music/${midis[playIndex ?? Math.floor(Math.random() * midis.length)]}.json`
+  );
+  midiJson = midi.default;
+  return midiJson;
+};
 
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -622,6 +630,8 @@ export default memo(function Piano(props: {
     window.playPiano = () => {
       clearTimeout(timeOutRef.current);
       midiPlay(midiJson);
+      const nextIndex = Number(localStorage.getItem('playIndex')) + 1;
+      localStorage.setItem('playIndex', nextIndex >= midis.length ? '0' : nextIndex.toString());
     };
     return () => {
       clearTimeout(timeOutRef.current);
@@ -648,7 +658,10 @@ export default memo(function Piano(props: {
           });
       });
     }
-    Promise.all(keys.map((v) => loadAudioSample(v.name, v.url)))
+    Promise.all([
+      ...keys.map((v) => loadAudioSample(v.name, v.url)),
+      getMidiJson(Number(localStorage.getItem('playIndex'))),
+    ])
       .then(() => {
         // 所有音频样本都已加载完成
         console.log("All audio samples loaded.");

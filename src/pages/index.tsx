@@ -33,7 +33,7 @@ function HomepageHeader() {
             {
               !tipsShow
                 ? <section className={clsx({ hide: playPiano || !pianoIsReady }, styles.playBar)}>
-                  <p>要来一曲吗?</p>
+                  <p>奏乐？刷新页面能切歌～</p>
                   <div>
                     <button onClick={handlePlay}>给朕弹一个</button>
                     <button onClick={() => setTipsShow(true)}>我要自己弹</button>
