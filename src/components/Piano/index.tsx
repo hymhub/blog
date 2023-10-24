@@ -3,7 +3,7 @@ import "./style.css";
 const noteBaseUrl = "/blog/piano/";
 import clsx from "clsx";
 
-const midis = ["mariage_d'amour", "my_heart_will_go_on", "the_truth_that_you_leave", "luv_letter", "summer", "晴天", "水边的阿狄丽娜"];
+const midis = ["my_heart_will_go_on", "the_truth_that_you_leave", "luv_letter", "mariage_d'amour", "summer", "晴天", "水边的阿狄丽娜"];
 
 let midiJson: { bpm: number; notes: { name: string; time: number; }[]; };
 
@@ -589,10 +589,18 @@ export default memo(function Piano(props: {
       time: number;
     }[];
   }) => {
-    const noteQueue = midiJson.notes;
+    const noteQueue = [...midiJson.notes];
     const startTime = Date.now();
     const isMobile = isMobileDevice();
     const play = () => {
+      if (noteQueue.length === 0) {
+        getMidiJson(Number(localStorage.getItem('playIndex'))).then(() => {
+          timeOutRef.current = setTimeout(() => {
+            window.playPiano()
+          }, 1000);
+        })
+        return
+      }
       const fragment = noteQueue.slice(0, 20);
       fragment.forEach((note) => {
         if (Date.now() - startTime >= note.time * 1000) {
