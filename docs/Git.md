@@ -69,9 +69,11 @@ git add .
 # 取消暂存更改(从暂存区撤出)
 git restore --staged <name>
 git restore --staged .
-# 放弃更改
+# 放弃更改(未被跟踪的不会删除，例如新增文件)
 git restore <name>
 git restore .
+# 删除未跟踪文件，vscode 放弃所有更改约等于 git clean -f + git restore .
+git clean -f
 # 提交
 git commit
 git commit -m 'fix: bug'
@@ -204,6 +206,8 @@ git pull -r <remotename> <branchname>
 git push
 # 推送到...，只能选择任意 remotename，本地 branchname 和远程必须对应
 git push <remotename> <branchname>
+# 推送新分支(发布分支)
+git push -u <remotename> <branchname>
 # 删除远程分支
 git push <remotename> <branchname> --delete
 ```

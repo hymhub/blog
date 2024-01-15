@@ -61,6 +61,8 @@ const deleteFolderRecursive = (folderPath) => {
     fs.rmdirSync(folderPath);
   }
 }
+// 简单内置方法
+fs.rmSync(folderPath, { recursive: true })
 ```
 
 ## 检测文件/文件夹是否存在、获取文件名、后缀名
